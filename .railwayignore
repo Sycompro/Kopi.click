@@ -1,0 +1,9 @@
+node_modules
+release
+dist
+electron/renderer
+assets
+.git
+.vscode
+*.exe
+*.zip

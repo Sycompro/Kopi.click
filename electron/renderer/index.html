@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kopi Industrial — v1.4.0 PRO</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+  <div class="titlebar">
+    <div class="logo-area">
+      <img src="../../assets/logo.png" class="logo-img" alt="Kopi Logo">
+      <span class="logo-text">KOPI INDUSTRIAL</span>
+      <span class="v">v1.4.0 PRO</span>
+    </div>
+    <div class="window-controls">
+      <button class="win-btn" id="btn-minimize"><i data-lucide="minus"></i></button>
+      <button class="win-btn" id="btn-maximize"><i data-lucide="square"></i></button>
+      <button class="win-btn close" id="btn-close"><i data-lucide="x"></i></button>
+    </div>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="nav">
+        <button class="nav-item active" data-section="dashboard">
+          <i data-lucide="layout-dashboard"></i> Panel Control
+        </button>
+        <button class="nav-item" data-section="printers">
+          <i data-lucide="printer"></i> Impresoras
+        </button>
+        <button class="nav-item" data-section="certificates">
+          <i data-lucide="shield-check"></i> Certificados
+        </button>
+        <button class="nav-item" data-section="logs">
+          <i data-lucide="settings"></i> Configuración
+        </button>
+      </nav>
+
+      <div class="status-footer">
+        <div class="status-box">
+          <div class="status-header">PUERTO 8181</div>
+          <div class="status-line">
+            <span class="dot offline" id="port-dot"></span>
+            <span id="port-status">CONECTANDO...</span>
+          </div>
+          <div id="security-shield" style="font-size: 11px; margin-top: 4px; opacity: 0.8;">
+            🛡️ Verificando seguridad
+          </div>
+          <div id="lan-ip"
+            style="font-size:10px;color:var(--primary);margin-top:6px;font-weight:600;word-break:break-all;">Iniciando
+            motor...</div>
+        </div>
+      </div>
+    </aside>
+
+    <main id="view-port">
+      <!-- Dynamic Content -->
+    </main>
+    <div id="notifications" class="notifications-container"></div>
+  </div>
+
+  <script>
+    // Bootstrap Diagnóstico
+    window.addEventListener('error', (e) => {
+      console.error('[Fatal Bootstrap]', e.error);
+      const status = document.getElementById('port-status');
+      if (status) {
+        status.innerText = 'FALLO CRÍTICO';
+        status.style.color = '#ff4444';
+      }
+      const lan = document.getElementById('lan-ip');
+      if (lan) lan.innerText = e.message;
+    });
+    console.log('[Kopi] Bootstrap inicializado');
+  </script>
+  <script src="renderer.js" type="module"></script>
+</body>
+
+</html>

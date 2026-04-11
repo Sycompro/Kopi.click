@@ -1,0 +1,21 @@
+ACUERDO DE LICENCIA DE USUARIO FINAL (EULA) - KOPI v1.4.2 PRO
+
+1. LICENCIA
+Kopi otorga al usuario una licencia no exclusiva y limitada para utilizar el Software Kopi PRO en entornos industriales y comerciales.
+
+2. USO PERMITIDO
+El Software está diseñado para la gestión de impresión y comunicación de hardware. El usuario es responsable de asegurar que el hardware conectado sea compatible.
+
+3. PROPIEDAD INTELECTUAL
+Kopi y sus logotipos son propiedad intelectual protegida. QZ Tray es una marca de QZ Industries, LLC; Kopi utiliza protocolos compatibles bajo licencias correspondientes.
+
+4. SEGURIDAD Y CERTIFICADOS
+Kopi v1.4.2 PRO utiliza una infraestructura de certificados locales (Root CA) para habilitar comunicaciones WSS seguras. El usuario acepta la instalación de estos certificados para el correcto funcionamiento del sistema.
+
+5. LIMITACIÓN DE RESPONSABILIDAD
+Kopi no se hace responsable de fallos de impresión derivados de configuraciones de red externas o hardware defectuoso.
+
+6. SOPORTE INDUSTRIAL
+Esta versión PRO incluye soporte para escaneo de puertos dinámicos y alineación de protocolo industrial.
+
+PROPIEDAD DE KOPI - 2026. Todos los derechos reservados.

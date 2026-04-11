@@ -1,0 +1,14 @@
+# Kopi - Archivos ignorados
+
+node_modules/
+dist/
+data/
+.env
+*.log
+
+# Electron (no necesario para el deploy de la API)
+electron/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db

@@ -1,0 +1,381 @@
+/* ══════════════════════════════════════════════════════
+   Kopi Enterprise — Design System (v1.2.0)
+   Industrial Grade React Interface
+   ══════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;800&display=swap');
+
+:root {
+    --bg-app: #f1f5f9;
+    --bg-sidebar: #ffffff;
+    --bg-card: #ffffff;
+
+    --primary: #2563eb;
+    --primary-deep: #1d4ed8;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --text-on-primary: #ffffff;
+
+    --border: #e2e8f0;
+    --radius: 12px;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-app);
+    color: var(--text-main);
+    overflow: hidden;
+    height: 100vh;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* ─── Titlebar ───────────────────────────────────────── */
+.titlebar {
+    height: 44px;
+    background: white;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    -webkit-app-region: drag;
+    user-select: none;
+}
+
+.titlebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-box {
+    width: 28px;
+    height: 28px;
+    background: var(--primary);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.brand-name {
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: -0.02em;
+}
+
+.brand-version {
+    font-size: 9px;
+    font-weight: 800;
+    background: #f1f5f9;
+    padding: 2px 8px;
+    border-radius: 20px;
+    color: var(--text-muted);
+}
+
+.window-controls {
+    display: flex;
+    gap: 4px;
+    -webkit-app-region: no-drag;
+}
+
+.ctrl-btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: all 0.2s;
+}
+
+.ctrl-btn:hover {
+    background: #f1f5f9;
+    color: var(--text-main);
+}
+
+.ctrl-btn.close:hover {
+    background: #fee2e2;
+    color: #ef4444;
+}
+
+/* ─── Layout ─────────────────────────────────────────── */
+.main-wrapper {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 240px;
+    background: white;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 12px;
+}
+
+.nav-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    background: transparent;
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+    background: #eff6ff;
+}
+
+.nav-link.active {
+    color: var(--primary);
+    background: #eff6ff;
+    font-weight: 600;
+}
+
+.sidebar-status {
+    margin-top: auto;
+    padding: 16px;
+    background: var(--bg-app);
+    border-radius: 12px;
+}
+
+.status-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--danger);
+}
+
+.status-dot.online {
+    background: var(--success);
+    box-shadow: 0 0 8px var(--success);
+}
+
+/* ─── Page Content ───────────────────────────────────── */
+.page-container {
+    flex: 1;
+    padding: 24px 32px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.page-header {
+    margin-bottom: 8px;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+.page-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* ─── Components ─────────────────────────────────────── */
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.stat-box {
+    background: white;
+    padding: 20px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.stat-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.card {
+    background: white;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.card-title {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+/* ─── Forms ──────────────────────────────────────────── */
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.input {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1.5px solid var(--border);
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.2s;
+    background: #f8fafc;
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.btn-action {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    background: var(--primary);
+    color: white;
+    transition: all 0.2s;
+}
+
+.btn-action:hover {
+    background: var(--primary-deep);
+}
+
+.btn-action:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ─── Table ──────────────────────────────────────────── */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+}
+
+.table td {
+    padding: 12px 16px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+/* ─── Logs ───────────────────────────────────────────── */
+.log-console {
+    background: #0f172a;
+    color: #94a3b8;
+    padding: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    border-radius: 8px;
+    height: 300px;
+    overflow-y: auto;
+}
+
+.log-line {
+    margin-bottom: 4px;
+    display: flex;
+    gap: 12px;
+}
+
+.log-time {
+    color: var(--primary);
+    opacity: 0.7;
+}
+
+.log-msg.success {
+    color: var(--success);
+}
+
+.log-msg.error {
+    color: var(--danger);
+}
