@@ -1,0 +1,12 @@
+{
+  "name": "kopi-cloud-broker",
+  "version": "1.0.0",
+  "description": "Puente WebSocket para impresión remota Kopi",
+  "main": "broker_server.js",
+  "scripts": {
+    "start": "node broker_server.js"
+  },
+  "dependencies": {
+    "ws": "^8.16.0"
+  }
+}
