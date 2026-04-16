@@ -73,6 +73,11 @@ wss.on('connection', (ws) => {
                     sede.tablets.add(ws);
                     console.log(`[Tablet] Sede ${sedeId} autorizada.`);
                     
+                    // Notificar al PC que una tablet se ha unido para que envíe manifest/impresoras
+                    if (sede.pc && sede.pc.readyState === WebSocket.OPEN) {
+                        sede.pc.send(JSON.stringify({ action: 'tablet_connected' }));
+                    }
+                    
                     // Informar a la tablet si el PC ya está ONLINE
                     const isPcOnline = (sede.pc && sede.pc.readyState === WebSocket.OPEN);
                     ws.send(JSON.stringify({ action: 'pcStatus', connected: isPcOnline }));
