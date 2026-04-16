@@ -62,9 +62,20 @@ wss.on('connection', (ws) => {
                     if (sede.pc) sede.pc.close();
                     sede.pc = ws;
                     console.log(`[PC] Sede ${sedeId} autorizada.`);
+                    
+                    // Notificar a todas las tablets de esta sede que el PC está ONLINE
+                    sede.tablets.forEach(tablet => {
+                        if (tablet.readyState === WebSocket.OPEN) {
+                            tablet.send(JSON.stringify({ action: 'pcStatus', connected: true }));
+                        }
+                    });
                 } else {
                     sede.tablets.add(ws);
                     console.log(`[Tablet] Sede ${sedeId} autorizada.`);
+                    
+                    // Informar a la tablet si el PC ya está ONLINE
+                    const isPcOnline = (sede.pc && sede.pc.readyState === WebSocket.OPEN);
+                    ws.send(JSON.stringify({ action: 'pcStatus', connected: isPcOnline }));
                 }
 
                 ws.send(JSON.stringify({ status: 'registered', sedeId, role }));
@@ -136,6 +147,13 @@ wss.on('connection', (ws) => {
             if (currentRole === 'pc') {
                 sede.pc = null;
                 console.log(`[PC] Sede ${currentSedeId} desconectada.`);
+                
+                // Notificar a todas las tablets de esta sede que el PC está OFFLINE
+                sede.tablets.forEach(tablet => {
+                    if (tablet.readyState === WebSocket.OPEN) {
+                        tablet.send(JSON.stringify({ action: 'pcStatus', connected: false }));
+                    }
+                });
             } else {
                 sede.tablets.delete(ws);
                 console.log(`[Tablet] Sede ${currentSedeId} desconectada.`);
