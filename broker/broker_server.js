@@ -79,7 +79,7 @@ wss.on('connection', (ws) => {
                     }
                     
                     // Informar a la tablet si el PC ya está ONLINE
-                    const isPcOnline = (sede.pc && sede.pc.readyState === WebSocket.OPEN);
+                    const isPcOnline = !!(sede.pc && sede.pc.readyState === WebSocket.OPEN);
                     ws.send(JSON.stringify({ action: 'pcStatus', connected: isPcOnline }));
                 }
 
